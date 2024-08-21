@@ -51,7 +51,7 @@ function CleanInput(input){
     let input_array = input.split("");
     let input_array_length = input_array.length;
 
-    for(let i = 0; 1 < input_array_length; 1++){
+    for(let i = 0; i < input_array_length; i++){
         if(input_array[i] == "*"){
             input_array[i] = ` <span class="operator">x</span> `;
         }else if(input_array[i] == "/"){
@@ -77,7 +77,7 @@ return input_array.join("");
 }
 
 function CleanOutput (output) {
-    let output_string = output.tostring();
+    let output_string = output.toString();
     let decimal = output_string.split(".")[1];
     output_string = output_string.split(".")[0];
 
@@ -86,15 +86,17 @@ function CleanOutput (output) {
     for (let i = output_array.length - 3; i > 0; i -= 3) {
         output_array.splice(i, 0, ",");
     }
+    if (decimal) {
+        output_array.push(".");
+        output_array.push(decimal);
+        return output_array.join("");
+    }
 }
 
-if (decimal) {
-    output_array.push(".");
-    output_array.push(decimal);
-}
 
-return output_array.join("");{
-}
+
+
+
 
 function ValidateInput (value) {
 let last_input = input.slice(-1);
